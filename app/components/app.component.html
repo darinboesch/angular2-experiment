@@ -1,0 +1,79 @@
+<div id="page-wrapper" [ngClass]="{'open': toggle}" ngCloak>
+    <!-- side bar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar">
+            <li class="sidebar-main">
+                <a (click)="toggleSidebar()">
+                    Dashboard
+                    <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                </a>
+            </li>
+            <li class="sidebar-title"><span>NAVIGATION</span></li>
+            <li class="sidebar-list">
+                <a [routerLink]="['Home']">Home <span class="menu-icon fa fa-home"></span></a>
+            </li>
+        </ul>
+    </div>
+    <!-- end side bar -->
+
+    <!-- content wrapper -->
+    <div id="content-wrapper">
+        <!-- page content -->
+        <div class="page-content">
+
+            <!-- header bar -->
+            <div class="row header">
+                <div class="col-xs-12">
+                    <div class="user pull-right">
+                        <div class="item dropdown" dropdown>
+                            <a class="dropdown-toggle" data-toggle="dropdown" dropdownToggle>
+                                <img src="assets/img/avatar.jpg">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">
+                                    Darin Boesch
+                                </li>
+                                <li class="divider"></li>
+                                <li class="link">
+                                    <a href="javascript:void(0)">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="javascript:void(0)">
+                                        Menu Item
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="javascript:void(0)">
+                                        Menu Item
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="link">
+                                    <a href="javascript:void(0)" (click)="onLogout()">
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="meta">
+                        <div class="page">
+                            {{title}}
+                        </div>
+                        <div class="breadcrumb-links">
+                            {{crumb}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end header bar -->
+
+            <ifs-alerts></ifs-alerts>
+            <router-outlet></router-outlet>
+        </div>
+        <!-- end page content -->
+    </div>
+    <!-- end content wrapper -->
+</div>
