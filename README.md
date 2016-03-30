@@ -1,5 +1,5 @@
 # AngularJS 2 Experiment
-## My own wonderings through Angular V2 Beta
+## My own wanderings through Angular V2 Beta
 * basic project structure
 * http calls
 * authentication / login ui
