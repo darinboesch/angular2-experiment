@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', 'rxjs/Rx', './alert'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Rx_1;
+    var core_1, Rx_1, alert_1;
     var initialAlerts, AlertsService;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
             },
             function (Rx_1_1) {
                 Rx_1 = Rx_1_1;
+            },
+            function (alert_1_1) {
+                alert_1 = alert_1_1;
             }],
         execute: function() {
             initialAlerts = [];
@@ -65,7 +68,7 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
                 }
                 // an imperative function call to this action stream
                 AlertsService.prototype.addAlert = function (type, msg) {
-                    this.newAlerts.next({ type: type, msg: msg });
+                    this.newAlerts.next(new alert_1.Alert({ type: type, msg: msg }));
                 };
                 AlertsService.prototype.clearAlerts = function () {
                     this.clear.next('clear');

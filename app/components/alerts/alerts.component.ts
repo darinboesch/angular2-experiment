@@ -1,30 +1,25 @@
-import { Component, OnInit } from 'angular2/core';
+import {Component, ChangeDetectionStrategy} from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
-import { Alert } from './Alert';
 import { AlertsService } from './alerts.service';
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'ifs-alerts',
     templateUrl: 'app/components/alerts/alerts.component.html',
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class AlertsComponent implements OnInit {
-    alerts: Alert[] = [];
+export class AlertsComponent {
+    alerts: Observable<any>;
     
     constructor(
-      public alertsService: AlertsService
+      private _alertsService: AlertsService
     ) {
-    }
-    
-    ngOnInit() {
-      this.alertsService.alerts
-        .subscribe( (alerts: Alert[]) => {
-          this.alerts = alerts;
-        });
+        this.alerts = _alertsService.alerts;
     }
     
     closeAlert(id: string) {
-       this.alertsService.removeAlert(id); 
+       this._alertsService.removeAlert(id);
     }
 }

@@ -61,7 +61,7 @@ export class AlertsService {
 
   // an imperative function call to this action stream
   addAlert(type: string, msg: string): void {
-    this.newAlerts.next({type: type, msg: msg});
+    this.newAlerts.next(new Alert({type: type, msg: msg}));
   }
 
   clearAlerts(): void {

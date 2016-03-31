@@ -1,23 +1,19 @@
-
-import { Component, OnInit } from 'angular2/core';
+import { Component } from 'angular2/core';
 import { Router, RouterLink } from 'angular2/router';
 import { FormBuilder, Validators, ControlGroup, NgIf } from 'angular2/common';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
-import { HTTP_BINDINGS } from 'angular2/http';
 import { Authentication } from '../../common/authentication';
 import { AlertsService } from '../alerts/alerts.service';
-import { Alert } from './Alert';
 
 @Component({
     selector: 'ifs-login',
     providers: [
-        HTTP_BINDINGS,
         Authentication
     ],
     templateUrl: 'app/components/login/login.component.html',
     directives: [RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES, NgIf]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     form: ControlGroup;
     
     constructor(
@@ -32,13 +28,6 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-      this._alertsService.alerts
-        .subscribe( (alerts: Alert[]) => {
-          console.log(alerts);
-          //this.alerts = alerts;
-        });
-    }
     onSubmit(value: any) {
         this._alertsService.clearAlerts();
       
@@ -49,7 +38,6 @@ export class LoginComponent implements OnInit {
                 },
                 () => {
                   this._alertsService.addAlert('danger', 'Unauthorized credentials.');
-                  //this._alertsService.addAlert('danger', 'Another Unauthorized credentials.');
                 }
             );
     }

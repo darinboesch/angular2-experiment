@@ -25,25 +25,19 @@ System.register(['angular2/core', 'angular2/common', './alerts.service'], functi
             }],
         execute: function() {
             AlertsComponent = (function () {
-                function AlertsComponent(alertsService) {
-                    this.alertsService = alertsService;
-                    this.alerts = [];
+                function AlertsComponent(_alertsService) {
+                    this._alertsService = _alertsService;
+                    this.alerts = _alertsService.alerts;
                 }
-                AlertsComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this.alertsService.alerts
-                        .subscribe(function (alerts) {
-                        _this.alerts = alerts;
-                    });
-                };
                 AlertsComponent.prototype.closeAlert = function (id) {
-                    this.alertsService.removeAlert(id);
+                    this._alertsService.removeAlert(id);
                 };
                 AlertsComponent = __decorate([
                     core_1.Component({
                         selector: 'ifs-alerts',
                         templateUrl: 'app/components/alerts/alerts.component.html',
-                        directives: [common_1.CORE_DIRECTIVES]
+                        directives: [common_1.CORE_DIRECTIVES],
+                        changeDetection: core_1.ChangeDetectionStrategy.OnPush
                     }), 
                     __metadata('design:paramtypes', [alerts_service_1.AlertsService])
                 ], AlertsComponent);

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/common', 'angular2/http', '../../common/authentication', '../alerts/alerts.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/common', '../../common/authentication', '../alerts/alerts.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', 'angular
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, common_1, common_2, http_1, authentication_1, alerts_service_1;
+    var core_1, router_1, common_1, common_2, authentication_1, alerts_service_1;
     var LoginComponent;
     return {
         setters:[
@@ -23,9 +23,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', 'angular
             function (common_1_1) {
                 common_1 = common_1_1;
                 common_2 = common_1_1;
-            },
-            function (http_1_1) {
-                http_1 = http_1_1;
             },
             function (authentication_1_1) {
                 authentication_1 = authentication_1_1;
@@ -45,13 +42,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', 'angular
                         password: ['', common_1.Validators.required]
                     });
                 }
-                LoginComponent.prototype.ngOnInit = function () {
-                    this._alertsService.alerts
-                        .subscribe(function (alerts) {
-                        console.log(alerts);
-                        //this.alerts = alerts;
-                    });
-                };
                 LoginComponent.prototype.onSubmit = function (value) {
                     var _this = this;
                     this._alertsService.clearAlerts();
@@ -60,14 +50,12 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', 'angular
                         _this.router.navigate(['Home']);
                     }, function () {
                         _this._alertsService.addAlert('danger', 'Unauthorized credentials.');
-                        //this._alertsService.addAlert('danger', 'Another Unauthorized credentials.');
                     });
                 };
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'ifs-login',
                         providers: [
-                            http_1.HTTP_BINDINGS,
                             authentication_1.Authentication
                         ],
                         templateUrl: 'app/components/login/login.component.html',
