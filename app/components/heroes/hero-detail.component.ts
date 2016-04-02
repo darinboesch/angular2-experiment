@@ -4,6 +4,8 @@ import { RouteParams } from 'angular2/router';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
+// just a comment...
+
 @Component({
     selector: 'ifs-hero-detail',
     templateUrl: 'app/components/heroes/hero-detail.component.html',
