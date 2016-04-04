@@ -16,22 +16,16 @@ export class Authentication {
         let body = that.encodeDataPairs({grant_type: 'password', username: username, password: password});
         var source = Observable.create(function (observer: Observer<string>) {
         
-            observer.error('Authentication failed');
-            return source;
-            
-            that.http.post('http://localhost:4100/token', body, { headers: contentHeaders })
+            that.http.post('http://dboesch.cloudapp.net/token', body, { headers: contentHeaders })
                 .map(res => res.json())
                 .subscribe(
                     data => {
                         console.log('token: ' + data.access_token);
                         localStorage.setItem('token', data.access_token);
-                        //return Rx.Observable.of('token');
-                        //observer.of('token');
                         observer.next('token');
                     },
                     error => {
                         console.log('Authentication failed. Error: ' + error.text());
-                        //return Rx.Observable.throw('authentication failure');
                         observer.error('Authentication failed');
                     },
                     () => {
