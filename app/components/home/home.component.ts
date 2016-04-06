@@ -1,7 +1,7 @@
 
 import { Component } from 'angular2/core';
 import { ROUTER_DIRECTIVES, CanActivate} from 'angular2/router';
-import { Authentication, isLoggedin } from '../../common/authentication';
+import { HttpClient } from '../../common/httpClient';
 import { HeroService } from '../heroes/hero.service';
 
 @Component({
@@ -16,12 +16,12 @@ import { HeroService } from '../heroes/hero.service';
     styleUrls: ['assets/css/home.component.css'],
     directives: [ROUTER_DIRECTIVES],
     providers: [
-        Authentication,
         HeroService
     ]
 })
 
-@CanActivate(() => isLoggedin())
+//@CanActivate(() => isLoggedin())
+@CanActivate(() => HttpClient.IsLoggedIn())
 export class HomeComponent {
     constructor() {}
 }

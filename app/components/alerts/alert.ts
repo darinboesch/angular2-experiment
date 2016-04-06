@@ -1,4 +1,4 @@
-import {uuid} from '../../util/uuid';
+import {uuid} from '../../util/common';
 
 export class Alert {
     id: string;

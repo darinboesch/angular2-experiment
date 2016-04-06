@@ -2,14 +2,11 @@ import { Component } from 'angular2/core';
 import { Router, RouterLink } from 'angular2/router';
 import { FormBuilder, Validators, ControlGroup, NgIf } from 'angular2/common';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
-import { Authentication } from '../../common/authentication';
+import { HttpClient } from '../../common/httpClient';
 import { AlertsService } from '../alerts/alerts.service';
 
 @Component({
     selector: 'ifs-login',
-    providers: [
-        Authentication
-    ],
     templateUrl: 'app/components/login/login.component.html',
     directives: [RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES, NgIf]
 })
@@ -18,7 +15,7 @@ export class LoginComponent {
     
     constructor(
         public router: Router,
-        public auth: Authentication,
+        public http: HttpClient,
         private _builder: FormBuilder,
         private _alertsService: AlertsService
     ) {
@@ -31,7 +28,7 @@ export class LoginComponent {
     onSubmit(value: any) {
         this._alertsService.clearAlerts();
       
-        this.auth.login(value.username, value.password)
+        this.http.authenticate(value.username, value.password)
             .subscribe(
                 (token: any) => {
                     this.router.navigate(['Home']);

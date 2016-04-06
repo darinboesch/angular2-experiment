@@ -1,7 +1,6 @@
 /* jshint bitwise:false, node:true */
 /* tslint:disable:no-bitwise no-var-keyword typedef */
 
-// taken from TodoMVC
 export function uuid() {
   var i, random;
   var result = '';
@@ -17,3 +16,12 @@ export function uuid() {
 
   return result;
 };
+
+export function encodeDataPairs(obj) {
+  var str = [];
+  for(var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}

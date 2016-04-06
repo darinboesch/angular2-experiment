@@ -3,7 +3,6 @@
 System.register([], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    // taken from TodoMVC
     function uuid() {
         var i, random;
         var result = '';
@@ -18,6 +17,15 @@ System.register([], function(exports_1, context_1) {
         return result;
     }
     exports_1("uuid", uuid);
+    function encodeDataPairs(obj) {
+        var str = [];
+        for (var p in obj)
+            if (obj.hasOwnProperty(p)) {
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            }
+        return str.join("&");
+    }
+    exports_1("encodeDataPairs", encodeDataPairs);
     return {
         setters:[],
         execute: function() {
@@ -25,4 +33,4 @@ System.register([], function(exports_1, context_1) {
         }
     }
 });
-//# sourceMappingURL=uuid.js.map
+//# sourceMappingURL=common.js.map

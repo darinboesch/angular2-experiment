@@ -3,8 +3,6 @@ import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router } from 'angular2/router';
 
 import { DROPDOWN_DIRECTIVES, Dropdown } from 'ng2-bootstrap/ng2-bootstrap';
-import { Authentication } from '../common/authentication';
-import { HTTP_BINDINGS} from 'angular2/http';
 
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
@@ -13,7 +11,8 @@ import { HeroService }     from './heroes/hero.service';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './heroes/hero-detail.component';
 import { AlertsComponent } from './alerts/alerts.component';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES } from "angular2/common";
+import { CORE_DIRECTIVES, FORM_DIRECTIVES } from "angular2/common";
+import { HttpClient } from '../common/httpClient';
 
 @Component({
     selector: 'ifs-app',
@@ -22,8 +21,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES } from "angular2/common";
     directives: [ROUTER_DIRECTIVES, AlertsComponent, CORE_DIRECTIVES, FORM_DIRECTIVES, DROPDOWN_DIRECTIVES, Dropdown],
     providers: [
         ROUTER_PROVIDERS,
-        HeroService,
-        HTTP_BINDINGS
+        HeroService
     ]
 })
 @RouteConfig([
@@ -64,8 +62,8 @@ export class AppComponent {
     mobileView: number = 992;
     
     constructor(
-        public auth: Authentication,
-        public router: Router
+        public router: Router,
+        public http: HttpClient
     ) {
         this.attachEvents();
     }
@@ -94,7 +92,8 @@ export class AppComponent {
     }
 
     onLogout() {
-        this.auth.logout()
+        this.http.clearAuthentication()
+        //this.auth.logout()
             .subscribe(
                 () => this.router.navigate(['Login'])
             );
