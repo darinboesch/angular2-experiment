@@ -1,21 +1,29 @@
 import {Injectable} from 'angular2/core';
-import {Observable} from 'rxjs';
+import {Response} from 'angular2/http';
 import {Hero} from './hero';
 import {HEROES} from '../../mock/mock-heroes';
-import {HttpClient} from '../../common/httpClient';
+import {HttpClient} from '../../common/http-client';
+import {Observable} from "rxjs/Observable";
 
-var HEROES_URL: string = 'http://dboesch.cloudapp.net/heroes';
+var HEROES_URL: string = 'http://dboesch.cloudapp.net/rsp/heroes';
 
 @Injectable()
 export class HeroService {
-//    getHeroes() {
-//        return Promise.resolve(HEROES);
-//    }
+    public heroes: Observable<Hero[]>;
 
     constructor(
       private _http: HttpClient
     ) {
+        this.heroes = _http.get(HEROES_URL)
+          .map(response => response.json());
+    }
 
+    getHeroes() {
+        return this.heroes;
+    }
+
+    getHeroesStatic() {
+        return Promise.resolve(HEROES);
     }
 
     getHeroesSlowly() {
@@ -24,14 +32,8 @@ export class HeroService {
         );
     }
     
-    getHero(id: number) {
-        return Promise.resolve(HEROES).then(
-            heroes => heroes.filter(hero => hero.id === id)[0]
-        );
-    }
-    
-    getHeroes() {
-      return Promise.resolve(this._http.get(HEROES_URL));
+    getHero(id: number) : Observable<Hero> {
+        return this._http.get(HEROES_URL + '/' + id.toString()).map(response => response.json());
     }
 }
 

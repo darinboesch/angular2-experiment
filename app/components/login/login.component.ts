@@ -2,7 +2,7 @@ import { Component } from 'angular2/core';
 import { Router, RouterLink } from 'angular2/router';
 import { FormBuilder, Validators, ControlGroup, NgIf } from 'angular2/common';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
-import { HttpClient } from '../../common/httpClient';
+import { Authentication } from '../../common/authentication';
 import { AlertsService } from '../alerts/alerts.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent {
     
     constructor(
         public router: Router,
-        public http: HttpClient,
+        public auth: Authentication,
         private _builder: FormBuilder,
         private _alertsService: AlertsService
     ) {
@@ -28,7 +28,7 @@ export class LoginComponent {
     onSubmit(value: any) {
         this._alertsService.clearAlerts();
       
-        this.http.authenticate(value.username, value.password)
+        this.auth.login(value.username, value.password)
             .subscribe(
                 (token: any) => {
                     this.router.navigate(['Home']);

@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../mock/mock-heroes', '../../common/httpClient'], function(exports_1, context_1) {
+System.register(['angular2/core', '../../mock/mock-heroes', '../../common/http-client'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../../mock/mock-heroes', '../../common/httpCl
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mock_heroes_1, httpClient_1;
+    var core_1, mock_heroes_1, http_client_1;
     var HEROES_URL, HeroService;
     return {
         setters:[
@@ -20,18 +20,23 @@ System.register(['angular2/core', '../../mock/mock-heroes', '../../common/httpCl
             function (mock_heroes_1_1) {
                 mock_heroes_1 = mock_heroes_1_1;
             },
-            function (httpClient_1_1) {
-                httpClient_1 = httpClient_1_1;
+            function (http_client_1_1) {
+                http_client_1 = http_client_1_1;
             }],
         execute: function() {
-            HEROES_URL = 'http://dboesch.cloudapp.net/heroes';
+            HEROES_URL = 'http://dboesch.cloudapp.net/rsp/heroes';
             HeroService = (function () {
-                //    getHeroes() {
-                //        return Promise.resolve(HEROES);
-                //    }
                 function HeroService(_http) {
                     this._http = _http;
+                    this.heroes = _http.get(HEROES_URL)
+                        .map(function (response) { return response.json(); });
                 }
+                HeroService.prototype.getHeroes = function () {
+                    return this.heroes;
+                };
+                HeroService.prototype.getHeroesStatic = function () {
+                    return Promise.resolve(mock_heroes_1.HEROES);
+                };
                 HeroService.prototype.getHeroesSlowly = function () {
                     return new Promise(function (resolve) {
                         return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 5000);
@@ -40,14 +45,11 @@ System.register(['angular2/core', '../../mock/mock-heroes', '../../common/httpCl
                     );
                 };
                 HeroService.prototype.getHero = function (id) {
-                    return Promise.resolve(mock_heroes_1.HEROES).then(function (heroes) { return heroes.filter(function (hero) { return hero.id === id; })[0]; });
-                };
-                HeroService.prototype.getHeroes = function () {
-                    return Promise.resolve(this._http.get(HEROES_URL));
+                    return this._http.get(HEROES_URL + '/' + id.toString()).map(function (response) { return response.json(); });
                 };
                 HeroService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [httpClient_1.HttpClient])
+                    __metadata('design:paramtypes', [http_client_1.HttpClient])
                 ], HeroService);
                 return HeroService;
             }());

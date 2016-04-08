@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../common/httpClient', '../heroes/hero.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../common/authentication', '../heroes/hero.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../../common/httpClient', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, httpClient_1, hero_service_1;
+    var core_1, router_1, authentication_1, hero_service_1;
     var HomeComponent;
     return {
         setters:[
@@ -20,8 +20,8 @@ System.register(['angular2/core', 'angular2/router', '../../common/httpClient', 
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (httpClient_1_1) {
-                httpClient_1 = httpClient_1_1;
+            function (authentication_1_1) {
+                authentication_1 = authentication_1_1;
             },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
@@ -40,7 +40,7 @@ System.register(['angular2/core', 'angular2/router', '../../common/httpClient', 
                             hero_service_1.HeroService
                         ]
                     }),
-                    router_1.CanActivate(function () { return httpClient_1.HttpClient.IsLoggedIn(); }), 
+                    router_1.CanActivate(function () { return authentication_1.isLoggedIn(); }), 
                     __metadata('design:paramtypes', [])
                 ], HomeComponent);
                 return HomeComponent;

@@ -10,17 +10,17 @@ import { HeroService } from '../heroes/hero.service';
     templateUrl: 'app/components/dashboard/dashboard.component.html',
     styleUrls: ['assets/css/dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
     heroes: Hero[] = [];
 
     constructor(
         private _router: Router,
         private _heroService: HeroService) {
-    }
-
-    ngOnInit() {
-        this._heroService.getHeroes();
-            //.then(heroes => this.heroes = heroes.slice(1,5));
+          _heroService.heroes
+            .subscribe(
+              heroes => this.heroes = heroes.slice(1,5),
+              err => console.error('Error ' + err)
+            );
     }
 
     gotoDetail(hero: Hero) {

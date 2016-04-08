@@ -12,18 +12,17 @@ import { HeroService } from './hero.service';
     styleUrls: ['assets/css/hero-detail.component.css'],
     inputs: ['hero']
 })
-export class HeroDetailComponent implements OnInit {
+export class HeroDetailComponent {
     hero: Hero;
 
     constructor(
-        private _heroService: HeroService,
-        private _routeParams: RouteParams) {
-    }
-
-    ngOnInit() {
-        let id = +this._routeParams.get('id');
-        this._heroService.getHero(id)
-            .then(hero => this.hero = hero);
+      private _heroService: HeroService,
+      private _routeParams: RouteParams) {
+        _heroService.getHero(+this._routeParams.get('id'))
+          .subscribe(
+            hero => this.hero = hero,
+            err => console.error('Error ' + err)
+          );
     }
 
     goBack() {

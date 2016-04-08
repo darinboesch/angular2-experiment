@@ -1,7 +1,7 @@
 
 import { Component } from 'angular2/core';
 import { ROUTER_DIRECTIVES, CanActivate} from 'angular2/router';
-import { HttpClient } from '../../common/httpClient';
+import { isLoggedIn } from '../../common/authentication';
 import { HeroService } from '../heroes/hero.service';
 
 @Component({
@@ -20,8 +20,7 @@ import { HeroService } from '../heroes/hero.service';
     ]
 })
 
-//@CanActivate(() => isLoggedin())
-@CanActivate(() => HttpClient.IsLoggedIn())
+@CanActivate(() => isLoggedIn())
 export class HomeComponent {
     constructor() {}
 }

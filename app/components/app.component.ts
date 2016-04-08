@@ -12,7 +12,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './heroes/hero-detail.component';
 import { AlertsComponent } from './alerts/alerts.component';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from "angular2/common";
-import { HttpClient } from '../common/httpClient';
+import { Authentication } from '../common/authentication';
 
 @Component({
     selector: 'ifs-app',
@@ -21,6 +21,7 @@ import { HttpClient } from '../common/httpClient';
     directives: [ROUTER_DIRECTIVES, AlertsComponent, CORE_DIRECTIVES, FORM_DIRECTIVES, DROPDOWN_DIRECTIVES, Dropdown],
     providers: [
         ROUTER_PROVIDERS,
+        Authentication,
         HeroService
     ]
 })
@@ -63,7 +64,7 @@ export class AppComponent {
     
     constructor(
         public router: Router,
-        public http: HttpClient
+        public auth: Authentication
     ) {
         this.attachEvents();
     }
@@ -92,10 +93,9 @@ export class AppComponent {
     }
 
     onLogout() {
-        this.http.clearAuthentication()
-        //this.auth.logout()
-            .subscribe(
-                () => this.router.navigate(['Login'])
-            );
+        this.auth.logout()
+          .subscribe(
+              () => this.router.navigate(['Login'])
+          );
     }
 }
