@@ -1,5 +1,4 @@
-import {Injectable} from 'angular2/core';
-import {Response} from 'angular2/http';
+import {Injectable, Inject} from 'angular2/core';
 import {Hero} from './hero';
 import {HEROES} from '../../mock/mock-heroes';
 import {HttpClient} from '../../common/http-client';

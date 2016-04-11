@@ -1,4 +1,4 @@
-<div class="row alerts-container" *ngIf="alerts">
+<div class="row alerts-container" *ngIf="(alerts | async) && (alerts | async).length > 0">
     <div class="col-xs-12">
         <div class="alert alert-{{alert.type}}" *ngFor="#alert of alerts | async" role="alert">
             <button type="button" (click)="closeAlert(alert.id)" class="close" aria-label="Close">

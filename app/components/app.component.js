@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstrap', "./login/login.component", "./home/home.component", './dashboard/dashboard.component', './heroes/hero.service', './heroes/heroes.component', './heroes/hero-detail.component', './alerts/alerts.component', "angular2/common", '../common/authentication'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstrap', './login/login.component', './home/home.component', './dashboard/dashboard.component', './heroes/hero.service', './heroes/heroes.component', './heroes/hero-detail.component', './alerts/alerts.component', 'angular2/common', '../common/authentication', '../common/http-client', "./alerts/alerts.service", './app.config'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,11 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, ng2_bootstrap_1, login_component_1, home_component_1, dashboard_component_1, hero_service_1, heroes_component_1, hero_detail_component_1, alerts_component_1, common_1, authentication_1;
-    var AppComponent;
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+    var core_1, router_1, ng2_bootstrap_1, login_component_1, home_component_1, dashboard_component_1, hero_service_1, heroes_component_1, hero_detail_component_1, alerts_component_1, common_1, authentication_1, http_client_1, alerts_service_1, app_config_1;
+    var APP_CONFIG, AppComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -49,13 +52,23 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
             },
             function (authentication_1_1) {
                 authentication_1 = authentication_1_1;
+            },
+            function (http_client_1_1) {
+                http_client_1 = http_client_1_1;
+            },
+            function (alerts_service_1_1) {
+                alerts_service_1 = alerts_service_1_1;
+            },
+            function (app_config_1_1) {
+                app_config_1 = app_config_1_1;
             }],
         execute: function() {
+            exports_1("APP_CONFIG", APP_CONFIG = new core_1.OpaqueToken('app.config'));
             AppComponent = (function () {
-                function AppComponent(router, auth) {
+                function AppComponent(_config, router, auth) {
+                    this._config = _config;
                     this.router = router;
                     this.auth = auth;
-                    this.title = 'IFS is Angular!';
                     this.crumb = 'IFS / Home';
                     this.toggle = false;
                     this.mobileView = 992;
@@ -97,7 +110,10 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
                         directives: [router_1.ROUTER_DIRECTIVES, alerts_component_1.AlertsComponent, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, ng2_bootstrap_1.DROPDOWN_DIRECTIVES, ng2_bootstrap_1.Dropdown],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
+                            core_1.provide(APP_CONFIG, { useValue: app_config_1.CONFIG }),
+                            http_client_1.HttpClient,
                             authentication_1.Authentication,
+                            alerts_service_1.AlertsService,
                             hero_service_1.HeroService
                         ]
                     }),
@@ -131,8 +147,9 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
                             name: 'HeroDetail',
                             component: hero_detail_component_1.HeroDetailComponent
                         }
-                    ]), 
-                    __metadata('design:paramtypes', [router_1.Router, authentication_1.Authentication])
+                    ]),
+                    __param(0, core_1.Inject(APP_CONFIG)), 
+                    __metadata('design:paramtypes', [Object, router_1.Router, authentication_1.Authentication])
                 ], AppComponent);
                 return AppComponent;
             }());

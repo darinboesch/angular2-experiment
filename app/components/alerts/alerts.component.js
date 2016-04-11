@@ -27,8 +27,15 @@ System.register(['angular2/core', 'angular2/common', './alerts.service'], functi
             AlertsComponent = (function () {
                 function AlertsComponent(_alertsService) {
                     this._alertsService = _alertsService;
-                    this.alerts = _alertsService.alerts;
+                    //this.alerts = _alertsService.alerts;
+                    //this.alerts
+                    //  .subscribe(
+                    //    alerts => { console.log(alerts.length > 0); }
+                    //  );
                 }
+                AlertsComponent.prototype.ngOnInit = function () {
+                    this.alerts = this._alertsService.alerts;
+                };
                 AlertsComponent.prototype.closeAlert = function (id) {
                     this._alertsService.removeAlert(id);
                 };
