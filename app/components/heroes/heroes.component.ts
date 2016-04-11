@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {Hero} from './hero';
 import {HeroDetailComponent} from './hero-detail.component';
@@ -10,7 +10,7 @@ import {HeroService} from './hero.service';
     styleUrls: ['assets/css/heroes.component.css'],
     directives: [HeroDetailComponent]
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent {
     heroes: Hero[];
     selectedHero: Hero;
     

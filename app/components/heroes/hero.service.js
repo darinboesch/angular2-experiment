@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../mock/mock-heroes', '../../common/http-client'], function(exports_1, context_1) {
+System.register(['angular2/core', '../../mock/mock-heroes', '../../common/http-client', '../app.config'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,11 @@ System.register(['angular2/core', '../../mock/mock-heroes', '../../common/http-c
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mock_heroes_1, http_client_1;
-    var HEROES_URL, HeroService;
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+    var core_1, mock_heroes_1, http_client_1, app_config_1;
+    var HeroService;
     return {
         setters:[
             function (core_1_1) {
@@ -22,13 +25,16 @@ System.register(['angular2/core', '../../mock/mock-heroes', '../../common/http-c
             },
             function (http_client_1_1) {
                 http_client_1 = http_client_1_1;
+            },
+            function (app_config_1_1) {
+                app_config_1 = app_config_1_1;
             }],
         execute: function() {
-            HEROES_URL = 'http://dboesch.cloudapp.net/rsp/heroes';
             HeroService = (function () {
-                function HeroService(_http) {
+                function HeroService(_http, _config) {
                     this._http = _http;
-                    this.heroes = _http.get(HEROES_URL)
+                    this._config = _config;
+                    this.heroes = _http.get(this._config.apiHeroes)
                         .map(function (response) { return response.json(); });
                 }
                 HeroService.prototype.getHeroes = function () {
@@ -45,11 +51,13 @@ System.register(['angular2/core', '../../mock/mock-heroes', '../../common/http-c
                     );
                 };
                 HeroService.prototype.getHero = function (id) {
-                    return this._http.get(HEROES_URL + '/' + id.toString()).map(function (response) { return response.json(); });
+                    return this._http.get(this._config.apiHeroes + '/' + id.toString())
+                        .map(function (response) { return response.json(); });
                 };
                 HeroService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_client_1.HttpClient])
+                    core_1.Injectable(),
+                    __param(1, core_1.Inject(app_config_1.APP_CONFIG)), 
+                    __metadata('design:paramtypes', [http_client_1.HttpClient, Object])
                 ], HeroService);
                 return HeroService;
             }());

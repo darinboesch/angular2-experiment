@@ -3,17 +3,17 @@ import {Hero} from './hero';
 import {HEROES} from '../../mock/mock-heroes';
 import {HttpClient} from '../../common/http-client';
 import {Observable} from "rxjs/Observable";
-
-var HEROES_URL: string = 'http://dboesch.cloudapp.net/rsp/heroes';
+import {Config, APP_CONFIG} from '../app.config';
 
 @Injectable()
 export class HeroService {
     public heroes: Observable<Hero[]>;
 
     constructor(
-      private _http: HttpClient
+      private _http: HttpClient,
+      @Inject(APP_CONFIG) private _config: Config
     ) {
-        this.heroes = _http.get(HEROES_URL)
+        this.heroes = _http.get(this._config.apiHeroes)
           .map(response => response.json());
     }
 
@@ -32,7 +32,8 @@ export class HeroService {
     }
     
     getHero(id: number) : Observable<Hero> {
-        return this._http.get(HEROES_URL + '/' + id.toString()).map(response => response.json());
+        return this._http.get(this._config.apiHeroes + '/' + id.toString())
+          .map(response => response.json());
     }
 }
 

@@ -12,9 +12,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Authentication} from '../common/authentication';
 import {HttpClient} from '../common/http-client';
 import {AlertsService} from "./alerts/alerts.service";
-import {CONFIG, Config} from './app.config';
-
-export let APP_CONFIG = new OpaqueToken('app.config');
+import {CONFIG, Config, APP_CONFIG} from './app.config';
 
 @Component({
     selector: 'ifs-app',
@@ -62,7 +60,7 @@ export let APP_CONFIG = new OpaqueToken('app.config');
     }
 ])
 export class AppComponent {
-    crumb: string = 'IFS / Home';
+    crumb: string = 'Experiment / Home';
     toggle: boolean = false;
     mobileView: number = 992;
     

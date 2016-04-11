@@ -24,7 +24,6 @@ System.register(['angular2/core', 'angular2/router', './hero.service'], function
                 hero_service_1 = hero_service_1_1;
             }],
         execute: function() {
-            // just a comment....
             HeroDetailComponent = (function () {
                 function HeroDetailComponent(_heroService, _routeParams) {
                     var _this = this;
