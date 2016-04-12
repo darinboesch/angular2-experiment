@@ -27,7 +27,6 @@ System.register(['angular2/core', 'rxjs/Rx', './alert'], function(exports_1, con
             initialAlerts = [];
             AlertsService = (function () {
                 function AlertsService() {
-                    // data management streams
                     this.newAlerts = new Rx_1.Subject();
                     this.updates = new Rx_1.Subject();
                     // action streams

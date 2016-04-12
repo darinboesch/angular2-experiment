@@ -11,8 +11,8 @@ interface IAlertsOperation extends Function {
 @Injectable()
 export class AlertsService {
   // data management streams
-  newAlerts: Subject<Alert> = new Subject<Alert>();
   alerts: Observable<Alert[]>;
+  newAlerts: Subject<Alert> = new Subject<Alert>();
   updates: Subject<any> = new Subject<any>();
 
   // action streams
