@@ -7,15 +7,17 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {HeroService} from './heroes/hero.service';
 import {HeroesComponent} from './heroes/heroes.component';
 import {HeroDetailComponent} from './heroes/hero-detail.component';
+import {SumProcessorComponent} from './processor/sum-processor.component';
 import {AlertsComponent} from './alerts/alerts.component';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Authentication} from '../common/authentication';
 import {HttpClient} from '../common/http-client';
 import {AlertsService} from "./alerts/alerts.service";
 import {CONFIG, Config, APP_CONFIG} from './app.config';
+import {ProcessorService} from "./processor/processor.service";
 
 @Component({
-    selector: 'ifs-app',
+    selector: 'dlb-app',
     templateUrl: 'app/components/app.component.html',
     styleUrls: ['assets/css/app.component.css'],
     directives: [ROUTER_DIRECTIVES, AlertsComponent, CORE_DIRECTIVES, FORM_DIRECTIVES, DROPDOWN_DIRECTIVES, Dropdown],
@@ -25,7 +27,8 @@ import {CONFIG, Config, APP_CONFIG} from './app.config';
         HttpClient,                 // todo - figure out how to push this down to the service and not here
         Authentication,
         AlertsService,
-        HeroService
+        HeroService,
+        ProcessorService
     ]
 })
 @RouteConfig([
@@ -57,6 +60,11 @@ import {CONFIG, Config, APP_CONFIG} from './app.config';
         path: '/detail/:id',
         name: 'HeroDetail',
         component: HeroDetailComponent
+    },
+    {
+        path: '/processor',
+        name: 'SumProcessor',
+        component: SumProcessorComponent
     }
 ])
 export class AppComponent {

@@ -6,8 +6,8 @@ export class HttpClient {
   constructor(private _http: Http) {}
 
   createHeader(headers: Headers) {
+    headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
   }
   

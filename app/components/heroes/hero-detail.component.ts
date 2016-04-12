@@ -5,7 +5,7 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
-    selector: 'ifs-hero-detail',
+    selector: 'dlb-hero-detail',
     templateUrl: 'app/components/heroes/hero-detail.component.html',
     styleUrls: ['assets/css/hero-detail.component.css'],
     inputs: ['hero']

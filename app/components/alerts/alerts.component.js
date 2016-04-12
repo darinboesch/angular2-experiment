@@ -41,7 +41,7 @@ System.register(['angular2/core', 'angular2/common', './alerts.service'], functi
                 };
                 AlertsComponent = __decorate([
                     core_1.Component({
-                        selector: 'ifs-alerts',
+                        selector: 'dlb-alerts',
                         templateUrl: 'app/components/alerts/alerts.component.html',
                         directives: [common_1.CORE_DIRECTIVES],
                         changeDetection: core_1.ChangeDetectionStrategy.OnPush

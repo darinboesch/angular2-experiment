@@ -5,7 +5,7 @@ import {HeroDetailComponent} from './hero-detail.component';
 import {HeroService} from './hero.service';
 
 @Component({
-    selector: 'ifs-heroes',
+    selector: 'dlb-heroes',
     templateUrl: 'app/components/heroes/heroes.component.html',
     styleUrls: ['assets/css/heroes.component.css'],
     directives: [HeroDetailComponent]

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../common/authentication', '../heroes/hero.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../common/authentication', '../heroes/hero.service', "../processor/processor.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../../common/authenticatio
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, authentication_1, hero_service_1;
+    var core_1, router_1, authentication_1, hero_service_1, processor_service_1;
     var HomeComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/router', '../../common/authenticatio
             },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
+            },
+            function (processor_service_1_1) {
+                processor_service_1 = processor_service_1_1;
             }],
         execute: function() {
             HomeComponent = (function () {
@@ -32,12 +35,13 @@ System.register(['angular2/core', 'angular2/router', '../../common/authenticatio
                 }
                 HomeComponent = __decorate([
                     core_1.Component({
-                        selector: 'ifs-home',
-                        template: "\n        <nav>\n            <h2>Welcome!</h2>\n            <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n            <a [routerLink]=\"['Heroes']\">Heroes</a>\n        </nav>\n    ",
+                        selector: 'dlb-home',
+                        template: "\n        <nav>\n            <h2>Welcome!</h2>\n            <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n            <a [routerLink]=\"['Heroes']\">Heroes</a>\n            <a [routerLink]=\"['SumProcessor']\">Sum Processor</a>\n        </nav>\n    ",
                         styleUrls: ['assets/css/home.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
-                            hero_service_1.HeroService
+                            hero_service_1.HeroService,
+                            processor_service_1.ProcessorService
                         ]
                     }),
                     router_1.CanActivate(function () { return authentication_1.isLoggedIn(); }), 

@@ -4,7 +4,7 @@ import {AlertsService} from './alerts.service';
 import {Observable} from "rxjs/Observable";
 
 @Component({
-    selector: 'ifs-alerts',
+    selector: 'dlb-alerts',
     templateUrl: 'app/components/alerts/alerts.component.html',
     directives: [CORE_DIRECTIVES],
     changeDetection: ChangeDetectionStrategy.OnPush

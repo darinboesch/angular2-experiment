@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstrap', './login/login.component', './home/home.component', './dashboard/dashboard.component', './heroes/hero.service', './heroes/heroes.component', './heroes/hero-detail.component', './alerts/alerts.component', 'angular2/common', '../common/authentication', '../common/http-client', "./alerts/alerts.service", './app.config'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstrap', './login/login.component', './home/home.component', './dashboard/dashboard.component', './heroes/hero.service', './heroes/heroes.component', './heroes/hero-detail.component', './processor/sum-processor.component', './alerts/alerts.component', 'angular2/common', '../common/authentication', '../common/http-client', "./alerts/alerts.service", './app.config', "./processor/processor.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,7 +13,7 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, router_1, ng2_bootstrap_1, login_component_1, home_component_1, dashboard_component_1, hero_service_1, heroes_component_1, hero_detail_component_1, alerts_component_1, common_1, authentication_1, http_client_1, alerts_service_1, app_config_1;
+    var core_1, router_1, ng2_bootstrap_1, login_component_1, home_component_1, dashboard_component_1, hero_service_1, heroes_component_1, hero_detail_component_1, sum_processor_component_1, alerts_component_1, common_1, authentication_1, http_client_1, alerts_service_1, app_config_1, processor_service_1;
     var AppComponent;
     return {
         setters:[
@@ -44,6 +44,9 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
             function (hero_detail_component_1_1) {
                 hero_detail_component_1 = hero_detail_component_1_1;
             },
+            function (sum_processor_component_1_1) {
+                sum_processor_component_1 = sum_processor_component_1_1;
+            },
             function (alerts_component_1_1) {
                 alerts_component_1 = alerts_component_1_1;
             },
@@ -61,6 +64,9 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
             },
             function (app_config_1_1) {
                 app_config_1 = app_config_1_1;
+            },
+            function (processor_service_1_1) {
+                processor_service_1 = processor_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -103,7 +109,7 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
                 };
                 AppComponent = __decorate([
                     core_1.Component({
-                        selector: 'ifs-app',
+                        selector: 'dlb-app',
                         templateUrl: 'app/components/app.component.html',
                         styleUrls: ['assets/css/app.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES, alerts_component_1.AlertsComponent, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, ng2_bootstrap_1.DROPDOWN_DIRECTIVES, ng2_bootstrap_1.Dropdown],
@@ -113,7 +119,8 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
                             http_client_1.HttpClient,
                             authentication_1.Authentication,
                             alerts_service_1.AlertsService,
-                            hero_service_1.HeroService
+                            hero_service_1.HeroService,
+                            processor_service_1.ProcessorService
                         ]
                     }),
                     router_1.RouteConfig([
@@ -145,6 +152,11 @@ System.register(['angular2/core', 'angular2/router', 'ng2-bootstrap/ng2-bootstra
                             path: '/detail/:id',
                             name: 'HeroDetail',
                             component: hero_detail_component_1.HeroDetailComponent
+                        },
+                        {
+                            path: '/processor',
+                            name: 'SumProcessor',
+                            component: sum_processor_component_1.SumProcessorComponent
                         }
                     ]),
                     __param(0, core_1.Inject(app_config_1.APP_CONFIG)), 

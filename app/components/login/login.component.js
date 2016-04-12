@@ -54,7 +54,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../../c
                 };
                 LoginComponent = __decorate([
                     core_1.Component({
-                        selector: 'ifs-login',
+                        selector: 'dlb-login',
                         templateUrl: 'app/components/login/login.component.html',
                         directives: [router_1.RouterLink, common_2.CORE_DIRECTIVES, common_2.FORM_DIRECTIVES, common_1.NgIf]
                     }), 

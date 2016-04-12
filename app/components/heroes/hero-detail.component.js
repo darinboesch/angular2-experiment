@@ -37,7 +37,7 @@ System.register(['angular2/core', 'angular2/router', './hero.service'], function
                 };
                 HeroDetailComponent = __decorate([
                     core_1.Component({
-                        selector: 'ifs-hero-detail',
+                        selector: 'dlb-hero-detail',
                         templateUrl: 'app/components/heroes/hero-detail.component.html',
                         styleUrls: ['assets/css/hero-detail.component.css'],
                         inputs: ['hero']

@@ -6,7 +6,7 @@ import { Hero } from '../heroes/hero';
 import { HeroService } from '../heroes/hero.service';
 
 @Component({
-    selector: 'ifs-dashboard',
+    selector: 'dlb-dashboard',
     templateUrl: 'app/components/dashboard/dashboard.component.html',
     styleUrls: ['assets/css/dashboard.component.css'],
 })

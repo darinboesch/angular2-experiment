@@ -39,7 +39,7 @@ System.register(['angular2/core', 'angular2/router', '../heroes/hero.service'], 
                 };
                 DashboardComponent = __decorate([
                     core_1.Component({
-                        selector: 'ifs-dashboard',
+                        selector: 'dlb-dashboard',
                         templateUrl: 'app/components/dashboard/dashboard.component.html',
                         styleUrls: ['assets/css/dashboard.component.css'],
                     }), 

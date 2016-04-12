@@ -6,7 +6,7 @@ import { Authentication } from '../../common/authentication';
 import { AlertsService } from '../alerts/alerts.service';
 
 @Component({
-    selector: 'ifs-login',
+    selector: 'dlb-login',
     templateUrl: 'app/components/login/login.component.html',
     directives: [RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES, NgIf]
 })
