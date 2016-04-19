@@ -31,9 +31,9 @@
     <!-- 2. Configure SystemJS -->
     <script>
         System.config({
+            baseURL: '/',
             packages: {
                 app: {
-                    format: 'register',
                     defaultExtension: 'js'
                 },
                 rxjs: {
@@ -41,11 +41,12 @@
                 }
             },
             map: {
+                app: '/src',
                 moment: 'node_modules/moment/moment.js',
                 rxjs: 'node_modules/rxjs'
             }
         });
-        System.import('app/main')
+        System.import('src/main')
                 .then(null, console.error.bind(console));
     </script>
 </head>
