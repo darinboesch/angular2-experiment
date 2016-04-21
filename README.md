@@ -12,5 +12,5 @@
 
 1. Clone the repository: git clone `https://github.com/darinboesch/angular2-experiment.git`.
 2. Run npm install: `npm install`.
-3. Run: `npm start`.
+3. Run: `npm start build.dev`.
 
